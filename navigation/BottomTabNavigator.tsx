@@ -7,7 +7,10 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import TabThreeScreen from '../screens/TabThreeScreen';
+import TabFourScreen from '../screens/TabFourScreen';
+import TabFiveScreen from '../screens/TabFiveScreen';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList,TabThreeParamList,TabFourParamList,TabFiveParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -19,19 +22,41 @@ export default function BottomTabNavigator() {
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-home" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Itenerary"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-map-outline" color={color} />,
         }}
       />
+      <BottomTab.Screen
+        name="Help"
+        component={TabThreeNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-help" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Translations"
+        component={TabFourNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-language" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Chat"
+        component={TabFiveNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-chatbox-outline" color={color} />,
+        }}
+      />
+      
     </BottomTab.Navigator>
   );
 }
@@ -69,5 +94,47 @@ function TabTwoNavigator() {
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+const TabThreeStack = createStackNavigator<TabThreeParamList>();
+
+function TabThreeNavigator() {
+  return (
+    <TabThreeStack.Navigator>
+      <TabThreeStack.Screen
+        name="TabThreeScreen"
+        component={TabThreeScreen}
+        options={{ headerTitle: 'Tab Three Title' }}
+      />
+    </TabThreeStack.Navigator>
+  );
+}
+
+const TabFourStack = createStackNavigator<TabFourParamList>();
+
+function TabFourNavigator() {
+  return (
+    <TabFourStack.Navigator>
+      <TabFourStack.Screen
+        name="TabFourScreen"
+        component={TabFourScreen}
+        options={{ headerTitle: 'Tab Four Title' }}
+      />
+    </TabFourStack.Navigator>
+  );
+}
+
+const TabFiveStack = createStackNavigator<TabFiveParamList>();
+
+function TabFiveNavigator() {
+  return (
+    <TabFiveStack.Navigator>
+      <TabFiveStack.Screen
+        name="TabFiveScreen"
+        component={TabFiveScreen}
+        options={{ headerTitle: 'Tab Five Title' }}
+      />
+    </TabFiveStack.Navigator>
   );
 }
