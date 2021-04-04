@@ -119,7 +119,7 @@ function TabFourNavigator() {
       <TabFourStack.Screen
         name="TabFourScreen"
         component={TabFourScreen}
-        options={{ headerTitle: 'Translations' }}
+        options={{ headerTitle: 'Useful Translations' }}
       />
     </TabFourStack.Navigator>
   );
