@@ -5,8 +5,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import * as firebase from 'firebase';
+import "firebase/auth";
 
-import * as firebase from "firebase";
 var firebaseConfig = {
   apiKey: "AIzaSyBIkzUAEQTEF6h4K8Ui_Z8mF6WeM1f1Ff4",
   authDomain: "mavs-abroad-dda3b.firebaseapp.com",
@@ -17,11 +18,13 @@ var firebaseConfig = {
   appId: "1:583288162608:web:e6cba5ee73bad917d7a0f5",
   measurementId: "G-F8WJE0L2W1"
 };
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-//firebase.analytics();
 
 export default function App() {
+
+  if (!firebase.apps.length) {
+    console.log('Connected with Firebase')
+    firebase.initializeApp(firebaseConfig);
+  }
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 

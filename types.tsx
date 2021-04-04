@@ -1,6 +1,7 @@
 export type RootStackParamList = {
   Root: undefined;
   NotFound: undefined;
+  RegisterScreen:undefined
 };
 
 export type BottomTabParamList = {
@@ -26,4 +27,9 @@ export type TabFourParamList = {
 };
 export type TabFiveParamList = {
   TabFiveScreen: undefined;
+};
+
+
+export type RegisterScreenParamList = {
+  RegisterScreen: undefined;
 };
