@@ -1,29 +1,79 @@
-import * as React from 'react';
-import { Dimensions, StyleSheet} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View} from 'react-native';
 
-import { Text, View } from '../components/Themed';
+//import { DangerZone } from 'expo';
+//const { Lottie } = DangerZone;
 
-export default function TabOneScreen() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.weather_container}>
-        <Text style = {styles.weather_text}>Sunny</Text>
+import Weather from '../components/Weather';
+
+export default class App extends React.Component {
+  state = {
+    isLoading: true,
+    temperature: 0,
+    weatherCondition: null,
+    city: "Tokyo",
+    country: "JP",
+    error: null
+  };
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        this.fetchWeather(position.coords.latitude, position.coords.longitude);
+      },
+      error => {
+        this.setState({
+          error: 'Error Getting Weather Condtions'
+        });
+      }
+    );
+  }
+
+  fetchWeather(lat, lon) {
+    fetch(
+      `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=8f278d4877afe960998ca710b7c50156&units=imperial`
+    )
+      .then(res => res.json())
+      .then(json => {
+        // console.log(json);
+        this.setState({
+          temperature: Math.round(json.main.temp),
+          weatherCondition: json.weather[0].main,
+          city: json.name,
+          country: json.sys.country,
+          isLoading: false
+        });
+      });
+  }
+
+  render() {
+    const { isLoading, weatherCondition, temperature, city, country } = this.state;
+    return (
+      <View style={styles.container}>
+        {isLoading ? (
+          <View style={styles.loadingContainer}>
+            <Text style={styles.loadingText}>Fetching The Weather</Text>
+          </View>
+        ) : (
+          <Weather weather={weatherCondition} temperature={temperature} city={city} country={country} />
+        )}
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //backgroundColor: '#fff'
+  },
+  loadingContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    //backgroundColor: '#FFFDE4'
   },
-  weather_container: {
-    flex: 6,
-    // backgroundColor: "aqua",
-    width:Dimensions.get('window').width,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  loadingText: {
+    fontSize: 30
+  }
 });
