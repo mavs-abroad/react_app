@@ -1,27 +1,37 @@
-import { ImageBackground, StyleSheet, View, Text, Alert } from 'react-native';
+import { ImageBackground, StyleSheet, View, Text, Alert, Button, Image } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { TouchableOpacity, TextInput } from 'react-native-gesture-handler';
 import * as firebase from 'firebase';
 import { loggingOut, sendResetEmail } from '../components/firebase/firebaseMethods';
 export default function ResetScreen({ navigation }) {
 
-    const [email,setEmail]= useState("");
-   
+    const [email, setEmail] = useState("");
+
 
     return (<View style={styles.background}>
-        <View style={styles.titleContainer}>
-            <Text style={styles.title}>Send password reset email</Text>
-        </View>
-       
-                <TextInput placeholder="email" style={styles.inputs} onChangeText={e => setEmail(e)} />
+        <View style={{ justifyContent: "center", flexDirection: "row" }}>
+            <Image
+                style={styles.image}
 
-           
-        <TouchableOpacity style={styles.button} onPress={() => {
+                source={require('./../assets/images/splash.png')}
+            />
+        </View>
+
+        <Text style={styles.title}>Send password reset email</Text>
+
+
+        <View style={styles.inputGroup}>
+            <Text style={styles.label}>Email</Text>
+
+            <TextInput placeholder="Email" style={styles.inputs} onChangeText={e => setEmail(e)} />
+
+        </View>
+
+
+        <Button title="Reset" onPress={() => {
             sendResetEmail(email);
-            Alert.alert("Success","Successfully sent reset request");
-        }}>
-            <Text style={styles.buttonText}>Reset password</Text>
-        </TouchableOpacity>
+            Alert.alert("Success", "Successfully sent reset request");
+        }}></Button>
 
         <TouchableOpacity style={styles.button} onPress={() => {
             navigation.navigate("Login");
@@ -38,45 +48,44 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        paddingHorizontal: 20,
+        backgroundColor:"white",
     },
-    button: {
-        width: 200,
-        borderRadius: 15,
-        borderWidth: 3,
-        borderColor: 'white',
-        backgroundColor: '#4ecdc4',
-        padding: 5,
-        margin: '2%'
-    },
+
     buttonText: {
         fontSize: 20,
         fontWeight: 'bold',
         color: 'navy',
         textAlign: 'center'
     },
+    button: {
+        marginTop: 20
+    },
+    signupButton: {
+        marginTop: 20,
+        textAlign: "center"
+    },
+    inputGroup: {
+        marginVertical: 10,
+        alignItems: "center",
+        flexDirection: "row",
+    },
+    label: {
+        flex: 1
+    },
     inputs: {
-        fontSize:20,
-      
-        borderBottomColor:'red',
-        borderBottomWidth:2,
-        alignSelf:"stretch",
-        marginHorizontal:25, 
-      },
-    inlineText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'navy',
-        textAlign: 'center',
-        marginTop: '5%',
+        flex: 3,
+        borderBottomWidth: 2,
+        borderBottomColor: "blue"
+    },
+    image: {
+        width: 90,
+        height: 90,
+        resizeMode: "center"
     },
     title: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: 'black',
-        textAlign: 'center'
-    },
-    titleContainer: {
-        position: 'absolute',
-        top: 170,
-    },
+        fontSize: 20,
+        marginBottom: 10,
+        textAlign: "center",
+    }
 });
