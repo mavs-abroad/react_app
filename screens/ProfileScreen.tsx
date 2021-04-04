@@ -47,6 +47,7 @@ export default function ProfileScreen({ navigation }) {
 const styles = StyleSheet.create({
     background: {
         flex: 1,
+        backgroundColor:"white",
         justifyContent: 'center',
         alignItems: 'center',
     },
