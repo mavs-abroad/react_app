@@ -15,12 +15,12 @@ export default function LoadingScreen({ navigation }) {
   if(firebase.auth().currentUser != null) {
     navigation.replace('Home');
   }else{
-    navigation.replace('Signup');
+    navigation.replace('Login');
   }
 
   return (
     <View style={styles.container}>
-      <ActivityIndicator size='large' />
+      {/* <ActivityIndicator size='small' /> */}
     </View>
   );
 }
