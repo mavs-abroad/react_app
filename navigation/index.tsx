@@ -10,6 +10,8 @@ import LinkingConfiguration from './LinkingConfiguration';
 //import RegisterScreen from '../screens/RegisterScreen';
 import LoadingScreen from '../screens/LoadingScreen';
 import LoginScreen from '../screens/LoginScreen';
+import RegisterScreen from '../screens/RegisterScreen';
+import ResetScreen from '../screens/ResetScreen';
 //import ResetScreen from '../screens/ResetScreen';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -32,9 +34,9 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name={'Root'} component={LoadingScreen} options={{ headerShown: false }}/>
-      {/* <Stack.Screen name="Signup" component={RegisterScreen} /> */}
+      {<Stack.Screen name="Signup" component={RegisterScreen} /> }
       <Stack.Screen name={'Login'} component={LoginScreen} />
-      {/* <Stack.Screen name="PasswordReset" component={ResetScreen} /> */}
+      {<Stack.Screen name="PasswordReset" component={ResetScreen} />}
       <Stack.Screen name={'Home'} component={BottomTabNavigator} />
       <Stack.Screen name={'NotFound'} component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
