@@ -29,7 +29,7 @@ export async function registration(email:string, password:string, lastName:strin
 
 export async function signIn(email:string, password:string) {
   try {
-    //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
