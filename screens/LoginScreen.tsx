@@ -1,15 +1,17 @@
-import { StackScreenProps } from '@react-navigation/stack';
+//import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Button, Alert, Image } from 'react-native';
-
-import { RootStackParamList } from '../types';
+//import { StyleSheet, Text, TouchableOpacity, View, Button, Alert, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image,KeyboardAvoidingView } from 'react-native';
+//import { RootStackParamList } from '../types';
 import { TextInput } from 'react-native-gesture-handler';
-import * as firebase from 'firebase';
-import { registration, signIn } from '../components/firebase/firebaseMethods';
-import { NavigationHelpersContext, useNavigation } from '@react-navigation/native';
+//import * as firebase from 'firebase';
+//import { registration, signIn } from '../components/firebase/firebaseMethods';
+import { signIn } from '../components/firebase/firebaseMethods';
+//import { NavigationHelpersContext, useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function LoginScreen() {
-
 
     const [message, setMessage] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -39,50 +41,50 @@ export default function LoginScreen() {
 
     }
 
-    function handleForget() {
-        navigation.navigate("PasswordReset");
-    }
+    // function handleForget() {
+    //     navigation.navigate("PasswordReset");
+    // }
 
 
     return (
-        <View style={styles.container}>
-            <View style={{ justifyContent: "center", flexDirection: "row" }}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.container}>
+            <View style={{ justifyContent: "center", alignItems:"center", padding:20}}>
                 <Image
                     style={styles.image}
-
                     source={require('./../assets/images/splash.png')}
+
                 />
+                <Text style={{ textAlign: "center", fontSize: 30, color: "#f48c06", }}>Welcome Maverick!!</Text>
+                
+                <Text style={{ textAlign: "center", fontSize: 30,color: "#f48c06",  }}>Log In</Text>
             </View>
 
-            <Text style={{ textAlign: "center", fontSize: 20 }}>Welcome!! Let's login</Text>
 
             <View style={styles.inputGroup}>
-                <Text style={styles.label}>Email</Text>
 
                 <TextInput placeholder="Email" style={styles.inputs} onChangeText={e => setEmail(e)} />
-
-            </View>
-            <View style={styles.inputGroup}>
-                <Text style={styles.label}>Password</Text>
-
                 <TextInput placeholder="Password" value={password} secureTextEntry={true} style={styles.inputs} textContentType="password" onChangeText={e => setPassword(e)} />
 
             </View>
-            <Text>{message}</Text>
-            <View style={styles.button}>
-                <Button title="Login" disabled={disabled} onPress={() => { handleLogin() }}>Signin</Button>
-            </View>
-            <View style={styles.button}>
-                <Button title="Forget Password" onPress={() => { handleForget() }}>Forget Password</Button>
-            </View>
 
-            <View style={styles.signupButton}>
+
+            <Text>{message}</Text>
+
+            <Button title="LOG IN" titleStyle={{}} disabled={disabled} onPress={() => { handleLogin() }}/>
+
+            {/* <View style={styles.button}>
+                <Button title="Forget Password" onPress={() => { handleForget() }}>Forget Password</Button>
+            </View> */}
+
+            {/* <View style={styles.signupButton}>
                 <TouchableOpacity onPress={() => { navigation.navigate("Signup") }}>
                     <Text style={{textAlign:"center"}}>Back to sign up </Text>
 
                 </TouchableOpacity>
-            </View>
-        </View>
+            </View> */}
+        </KeyboardAvoidingView>
     );
 
 
@@ -92,38 +94,46 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        //backgroundColor: '#fff',
         alignItems: 'stretch',
         justifyContent: 'center',
-        padding: 10,
-        paddingHorizontal: 15
+        //padding: 10,
+        //paddingHorizontal: 15,
+        //paddingTop:40,
+        //marginTop:100,
     },
     inputs: {
-        flex: 3,
+        //flex: 3,
         fontSize: 20,
-        marginLeft: 10,
-        marginRight: 10,
+        //marginLeft: 10,
+        //marginRight: 10,
+        //margin:30,
         borderBottomColor: 'blue',
         borderBottomWidth: 2,
+        textAlign:"center",
+        paddingBottom:10,
+        marginHorizontal:50,
+        marginVertical:10,
+        //color : "blue",
     },
     button: {
-        marginTop: 20
+        marginTop: 20,
     },
     signupButton: {
         marginTop: 20,
         textAlign:"center"
     },
     inputGroup: {
-        marginVertical: 10,
-        alignItems: "center",
-        flexDirection: "row",
+        //marginVertical: 10,
+        //alignItems: "center",
+        //flexDirection: "row",
     },
     label: {
-        flex: 1
+        flex: 1,
     },
     image: {
-        width: 90,
-        height: 90,
-        resizeMode: "center"
+        width: 240,
+        height: 240,
+        resizeMode: "center",
     }
 });

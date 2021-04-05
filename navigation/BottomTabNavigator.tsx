@@ -11,7 +11,7 @@ import TabThreeScreen from '../screens/TabThreeScreen';
 import TabFourScreen from '../screens/TabFourScreen';
 import TabFiveScreen from '../screens/TabFiveScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList,TabThreeParamList,TabFourParamList,TabFiveParamList } from '../types';
-import ProfileScreen from '../screens/ProfileScreen';
+//import ProfileScreen from '../screens/ProfileScreen';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -56,18 +56,15 @@ export default function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-chatbox-outline" color={color} />,
         }}
-
-       
-
-      />
-
-    <BottomTab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-user" color={color} />,
-        }}
         />
+
+      {/* <BottomTab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarIcon: ({ color }) => <TabBarIcon name="ios-user" color={color} />,
+          }}
+      /> */}
       
     </BottomTab.Navigator>
   );
