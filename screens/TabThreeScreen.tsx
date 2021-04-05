@@ -2,14 +2,14 @@ import * as React from 'react';
 
 
 import {PureComponent} from 'react';
-import {StyleSheet,Text,View,TouchableOpacity,Image,Button} from 'react-native';
+import {StyleSheet,Text,View,TouchableOpacity,Image,Button,ScrollView} from 'react-native';
 import * as Linking from 'expo-linking';
 
 export default class App extends PureComponent {
   render() {
     let {container, cardText, card, cardImage} = styles
     return (
-      <View style={container}>
+      <ScrollView style={container}>
         <TouchableOpacity style={styles.button} onPress={_handleOpenUTASafety}>
           <Image style={cardImage} source={{ uri: 'https://studyabroad.uta.edu/accounts/C5D1D58E3088A42391B6FF5F023253CC/themes/stockassets/banner%202.png' }} />
           <Text style={cardText}>UTA Health and Safety</Text>
@@ -19,7 +19,7 @@ export default class App extends PureComponent {
           <Image style={cardImage} source={{ uri: 'https://www.2st.com.au/images/emergency-information-contact-slide.jpg' }} />
           <Text style={cardText}>Emergency Contact Info</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     )
   }
 }
