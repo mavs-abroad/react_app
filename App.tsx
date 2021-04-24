@@ -1,3 +1,4 @@
+// @flow
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -5,8 +6,9 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 import "firebase/auth";
+import "firebase/firestore";
 
 var firebaseConfig = {
   apiKey: "AIzaSyBIkzUAEQTEF6h4K8Ui_Z8mF6WeM1f1Ff4",
