@@ -1,7 +1,7 @@
 //import { StackScreenProps } from '@react-navigation/stack';
 import * as React from 'react';
-//import { StyleSheet, Text, TouchableOpacity, View, Button, Alert, Image } from 'react-native';
-import { StyleSheet, Text, View, Button, Image,KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Button, Alert, Image,KeyboardAvoidingView  } from 'react-native';
+//import { StyleSheet, Text, View, Button, Image} from 'react-native';
 //import { RootStackParamList } from '../types';
 import { TextInput } from 'react-native-gesture-handler';
 //import * as firebase from 'firebase';
