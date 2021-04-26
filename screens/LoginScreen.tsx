@@ -5,8 +5,8 @@ import { StyleSheet, Text, View, Button, Image,KeyboardAvoidingView } from 'reac
 //import { RootStackParamList } from '../types';
 import { TextInput } from 'react-native-gesture-handler';
 //import * as firebase from 'firebase';
-//import { registration, signIn } from '../components/firebase/firebaseMethods';
-import { signIn } from '../components/firebase/firebaseMethods';
+import { registration, signIn } from '../components/firebase/firebaseMethods';
+//import { signIn } from '../components/firebase/firebaseMethods';
 //import { NavigationHelpersContext, useNavigation } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -41,9 +41,9 @@ export default function LoginScreen() {
 
     }
 
-    // function handleForget() {
-    //     navigation.navigate("PasswordReset");
-    // }
+    function handleForget() {
+        navigation.navigate("PasswordReset");
+    }
 
 
     return (
@@ -74,16 +74,16 @@ export default function LoginScreen() {
 
             <Button title="LOG IN" titleStyle={{}} disabled={disabled} onPress={() => { handleLogin() }}/>
 
-            {/* <View style={styles.button}>
+            <View style={styles.button}>
                 <Button title="Forget Password" onPress={() => { handleForget() }}>Forget Password</Button>
-            </View> */}
+            </View>
 
-            {/* <View style={styles.signupButton}>
+            <View style={styles.signupButton}>
                 <TouchableOpacity onPress={() => { navigation.navigate("Signup") }}>
                     <Text style={{textAlign:"center"}}>Back to sign up </Text>
 
                 </TouchableOpacity>
-            </View> */}
+            </View>
         </KeyboardAvoidingView>
     );
 

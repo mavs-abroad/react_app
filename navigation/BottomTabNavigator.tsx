@@ -31,7 +31,7 @@ export default function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Itenerary"
-        component={TabTwoScreen}
+        component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-map-outline" color={color} />,
         }}
@@ -86,25 +86,25 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Welcome  | User ' }}
+        options={{ headerTitle: 'Welcome' }}
       />
     </TabOneStack.Navigator>
   );
 }
 
-// const TabTwoStack = createStackNavigator<TabTwoParamList>();
+const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
-// function TabTwoNavigator() {
-//   return (
-//     <TabTwoStack.Navigator>
-//       <TabTwoStack.Screen
-//         name="TabTwoScreen"
-//         component={TabTwoScreen}
-//         options={{ headerTitle: 'Itenerary' }}
-//       />
-//     </TabTwoStack.Navigator>
-//   );
-// }
+function TabTwoNavigator() {
+  return (
+    <TabTwoStack.Navigator>
+      <TabTwoStack.Screen
+        name="TabTwoScreen"
+        component={TabTwoScreen}
+        options={{ headerTitle: 'Itenerary' }}
+      />
+    </TabTwoStack.Navigator>
+  );
+}
 
 const TabThreeStack = createStackNavigator<TabThreeParamList>();
 
