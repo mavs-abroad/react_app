@@ -15,7 +15,7 @@ export default function LoadingScreen({ navigation }) {
   if(firebase.auth().currentUser != null) {
     navigation.replace('Home');
   }else{
-    navigation.replace('Login');
+    navigation.replace('Signup');
   }
 
   return (
