@@ -100,7 +100,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Itinerary' ,headerLeft:null, headerRight: () => <Ionicons name="map-sharp"/>}}></TabTwoStack.Screen>
+        options={{ headerTitle: 'Itinerary' ,headerLeft:null }}></TabTwoStack.Screen>
     </TabTwoStack.Navigator>
   );
 }
