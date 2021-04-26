@@ -86,7 +86,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Welcome  | User ' }}
+        options={{ headerTitle: 'Welcome' }}
       />
     </TabOneStack.Navigator>
   );

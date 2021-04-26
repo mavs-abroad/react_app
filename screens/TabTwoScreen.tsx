@@ -12,9 +12,9 @@ export default class App extends PureComponent {
     // let {container, cardText, card, styles.cardImage} = styles
     return (
       <View>
-      <Modal style ={styles.modal} visible={true}>
+      {/* <Modal style ={styles.modal} visible={true}>
         <Text>Hello</Text>
-      </Modal>
+      </Modal> */}
       <ScrollView style={styles.container}>
         
         <TouchableOpacity style={styles.button} /*onPress={_handleMeiji}*/>
