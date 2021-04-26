@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
@@ -30,12 +29,19 @@ export default function BottomTabNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="Itenerary"
+        name="Itinerary"
         component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-list" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Maps"
+        component={TabFiveNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-map-outline" color={color} />,
         }}
-      />
+        />
       <BottomTab.Screen
         name="Help"
         component={TabThreeNavigator}
@@ -50,13 +56,7 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-language" color={color} />,
         }}
       />
-      <BottomTab.Screen
-        name="Chat"
-        component={TabFiveNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-chatbox-outline" color={color} />,
-        }}
-        />
+      
 
       {/* <BottomTab.Screen
           name="Profile"
@@ -86,7 +86,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Welcome' }}
+        options={{ headerTitle: 'Welcome' ,headerLeft:null}}
       />
     </TabOneStack.Navigator>
   );
@@ -100,8 +100,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Itenerary' }}
-      />
+        options={{ headerTitle: 'Itinerary' ,headerLeft:null, headerRight: () => <Ionicons name="map-sharp"/>}}></TabTwoStack.Screen>
     </TabTwoStack.Navigator>
   );
 }
@@ -114,7 +113,7 @@ function TabThreeNavigator() {
       <TabThreeStack.Screen
         name="TabThreeScreen"
         component={TabThreeScreen}
-        options={{ headerTitle: 'Help' }}
+        options={{ headerTitle: 'Help',headerLeft:null }}
       />
     </TabThreeStack.Navigator>
   );
@@ -128,7 +127,7 @@ function TabFourNavigator() {
       <TabFourStack.Screen
         name="TabFourScreen"
         component={TabFourScreen}
-        options={{ headerTitle: 'Useful Translations' }}
+        options={{ headerTitle: 'Useful Translations',headerLeft:null }}
       />
     </TabFourStack.Navigator>
   );
@@ -142,7 +141,7 @@ function TabFiveNavigator() {
       <TabFiveStack.Screen
         name="TabFiveScreen"
         component={TabFiveScreen}
-        options={{ headerTitle: 'Chat' }}
+        options={{ headerTitle: 'Map',headerLeft:null }}
       />
     </TabFiveStack.Navigator>
   );
